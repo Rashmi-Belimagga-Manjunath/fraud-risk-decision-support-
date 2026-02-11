@@ -1,193 +1,104 @@
-Fraud Risk Decision Support System
+Fraud Risk Decision Support
 
 Logistic Regression | RapidMiner | EU Regulatory Framing
 
-Project Overview
+Executive Summary
 
-This project develops a fraud risk classification model designed as a decision-support system, not an automated blocking tool.
+This project implements an interpretable fraud risk classification model designed as a decision-support system, not an automated blocking tool.
 
-Using Logistic Regression in RapidMiner, the model assigns fraud risk predictions to banking transactions while prioritising:
+Built using Logistic Regression in RapidMiner, the model assigns fraud risk predictions to banking transactions while prioritising:
 
 Interpretability
 
-Recall for fraud cases
+Fraud recall (rare event detection)
 
 Regulatory alignment (GDPR, EU banking context)
 
 Human-in-the-loop oversight
 
-The objective is not full automation, but structured support for fraud analysts operating in regulated financial environments.
+The system demonstrates how AI can responsibly support fraud analysts in settlement risk management workflows.
 
-Problem Context
+Problem
 
-Fraud detection in banking is challenging due to:
+Banking fraud detection faces:
 
-Extremely large transaction volumes
+Extremely imbalanced data (~0.12% fraud rate)
 
-Highly imbalanced data (fraud cases are rare)
+High transaction volumes
 
-High false-positive rates in traditional rule-based systems
+False positives from rule-based systems
 
-Regulatory constraints on automated decision-making
+Regulatory limits on automated decision-making
 
-Under GDPR (Article 22) and EU financial governance requirements, automated decisions affecting customers must be explainable and subject to human oversight.
+Accuracy alone is insufficient. Models must be explainable, auditable, and operationally practical.
 
-This project demonstrates how AI can be responsibly integrated into settlement risk management workflows.
+Approach
 
-Dataset
+Pipeline built in RapidMiner:
 
-The model uses a publicly available banking transactions dataset containing:
+Data preparation and label assignment
 
-Transaction type (PAYMENT, TRANSFER, CASH_OUT, DEBIT)
-
-Transaction amount
-
-Account balance information
-
-Fraud indicator (isFraud)
-
-Key Observations
-
-Fraud rate ≈ 0.12%
-
-Severe class imbalance
-
-High variance in transaction amounts
-
-Presence of extreme outliers
-
-This imbalance makes recall (detecting fraud cases) more important than raw accuracy.
-
-Methodology
-
-The RapidMiner pipeline includes:
-
-Data Retrieval
-
-Data Type Conversion
-
-Label Assignment (isFraud as target variable)
-
-Train/Test Split
+Train/test split
 
 Logistic Regression model training
 
-Model application on test data
+Risk prediction on unseen data
 
-Performance evaluation (Confusion Matrix + Classification Metrics)
+Confusion matrix and performance evaluation
 
-Why Logistic Regression?
+Logistic Regression was selected for its:
 
-Logistic Regression was chosen because:
+Transparency
 
-It is interpretable
+Coefficient interpretability
 
-Coefficients can be explained to auditors
+Suitability for regulated financial environments
 
-Suitable for regulated environments
+Key Insight
 
-Supports accountability and transparency
-
-Model Evaluation
-
-Performance was assessed using:
-
-Confusion Matrix
-
-Precision
-
-Recall
-
-Classification Accuracy
-
-Given the severe class imbalance, emphasis was placed on:
+Given severe class imbalance, the focus is on:
 
 Fraud recall (True Positive Rate)
 
-Reduction of false positives
+Managing false positives
 
-Practical usefulness in analyst workflows
+Supporting analyst prioritisation
 
-📊 Confusion matrix screenshot available in the /visuals folder.
+This is framed as a risk scoring assistant, not an automated enforcement mechanism.
 
-Business & Operational Impact
+Governance Lens
 
-If deployed as decision-support:
+Designed with:
 
-Prioritises high-risk transactions for analyst review
+GDPR Article 22 considerations
 
-Reduces manual workload
+Human oversight requirements
 
-Minimises unnecessary customer friction
+Bias awareness
 
-Supports faster settlement for legitimate transactions
+Auditability in mind
 
-Maintains regulatory compliance
+Fraud detection in finance is as much a governance challenge as a technical one.
 
-The model is intentionally framed as a support mechanism — not a fully automated enforcement system.
+Repository Contents
 
-Ethical & Governance Considerations
+fraud_risk_decision_support.rmp – Reproducible RapidMiner pipeline
 
-Bias risk in transaction data
+/visuals – Confusion matrix output
 
-Risk of disproportionate impact on certain users
-
-GDPR Article 22 implications
-
-Need for human-in-the-loop review
-
-Requirement for auditability
-
-Responsible AI design is central to financial system deployment.
-
-Tools Used
-
-RapidMiner Studio
-
-Logistic Regression (H2O implementation)
-
-Confusion Matrix Performance Evaluation
-
-GitHub (documentation & reproducibility)
-
-Repository Structure
-fraud-risk-decision-support/
-│
-├── visuals/
-│   └── confusion_matrix.png
-│
-├── Fraud_Risk_Decision_Support_Report.pdf
-├── fraud_risk_decision_support.rmp
-├── README.md
-
-
-.rmp file allows full reproducibility in RapidMiner
-
-Report contains detailed academic framing
-
-Visuals folder contains performance outputs
+Project report (academic framing)
 
 Academic Context
 
-Programme: MSc Artificial Intelligence for Business
-Institution: National College of Ireland
+MSc Artificial Intelligence for Business
+National College of Ireland
 Module: Risk and Change Management
 
-This project reflects a governance-aware AI implementation approach suitable for regulated industries.
+Takeaway
 
-Key Takeaway
+AI in financial services must balance performance with accountability.
 
-Fraud detection is not just a machine learning problem — it is a governance problem.
-
-AI systems in banking must optimise not only for predictive performance, but for:
-
-Explainability
-
-Accountability
-
-Regulatory compliance
-
-Human oversight
+This project demonstrates how interpretable models can support fraud risk management without compromising regulatory integrity.
 
 This project demonstrates how interpretable models can responsibly support financial decision-making.
 <img width="882" height="697" alt="Screenshot 2026-02-10 at 10 41 25 PM" src="https://github.com/user-attachments/assets/a2b89800-60c2-4e72-a355-47f5a81fe55d" />
